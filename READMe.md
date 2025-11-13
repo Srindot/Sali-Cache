@@ -1,0 +1,15 @@
+Problem: Processing long videos with Vision-Language Models (VLMs) is computationally prohibitive. The Key-Value (KV) cache, which stores context from past frames, grows linearly with video length, quickly exhausting GPU memory (even 24GB). This is due to high temporal redundancy (static backgrounds) and spatial redundancy (unimportant pixels).
+
+Proposed Solution: A novel, two-stage cache management pipeline that runs before tokens are cached.
+
+Stage 1 (Temporal): "Deduplicates" tokens that are redundant from the previous frame.
+
+Stage 2 (Spatial): "Adaptively quantizes" new, unique tokens based on their visual importance, as determined by a cheap, external saliency model.
+
+Research Questions (Objectives):
+
+Does our two-stage pipeline (Sali-Cache) significantly reduce KV cache memory usage compared to a standard (FP16) cache?
+
+How does Sali-Cache's performance (e.g., summarization quality) compare to lossless caching and a naive "uniform 4-bit quantization" baseline?
+
+Which external saliency signal provides a better guide for quantization: semantic saliency (U²-Netp) or motion saliency (OpenCV Optical Flow)?
