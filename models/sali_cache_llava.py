@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from transformers import LlavaNextForConditionalGeneration
+from transformers import LlavaNextForConditionalGeneration, DynamicCache
 from PIL import Image
 import numpy as np
 import cv2
@@ -28,10 +28,11 @@ class SaliCacheLlava(LlavaNextForConditionalGeneration):
         print(f"Initializing Sali-Cache LLaVA. Loading U2Net from {u2net_weights_path}...")
         # 1. Load the Saliency Model
         self.saliency_model = U2NetpWrapper(u2net_weights_path)
-        self.saliency_model.eval().to(self.device) # Put it on the same device
-        
+        self.saliency_model.eval()
+
         # 2. Initialize Optical Flow state
         self.prev_frame_gray = None
+        self.current_raw_image = None
 
     @torch.no_grad()
     def get_cache_policy(self, pixel_values):
@@ -44,19 +45,18 @@ class SaliCacheLlava(LlavaNextForConditionalGeneration):
         # This is a complex step, for a real implementation.
         # For this skeleton, we assume 'pixel_values' is a processable image.
         
-        # TODO: This logic is simplified. In reality, you'd de-normalize
-        # the 'pixel_values' tensor to get a cv2-compatible image.
-        # For now, let's create a placeholder image.
-        
-        # --- Placeholder Image ---
-        # We'll pretend we converted the tensor back to a 336x336 image
-        # In a real impl, you'd use processor.image_processor.postprocess or similar
-        dummy_image_np = np.random.randint(0, 255, (336, 336, 3), dtype=np.uint8)
-        current_frame_gray = cv2.cvtColor(dummy_image_np, cv2.COLOR_RGB2GRAY)
-        
+        # Prefer using the provided raw image if available
+        if self.current_raw_image is not None:
+            pil_img = self.current_raw_image
+            img_np = np.array(pil_img.resize((336, 336)))
+            current_frame_gray = cv2.cvtColor(img_np, cv2.COLOR_RGB2GRAY)
+        else:
+            # Fallback random image (shouldn't happen in proper run)
+            dummy_image_np = np.random.randint(0, 255, (336, 336, 3), dtype=np.uint8)
+            current_frame_gray = cv2.cvtColor(dummy_image_np, cv2.COLOR_RGB2GRAY)
+
         # --- 1. Temporal Pruning (Optical Flow) ---
         if self.prev_frame_gray is None:
-            # First frame, keep everything
             motion_scores = torch.ones(NUM_PATCHES_PER_DIM**2, device=self.device)
         else:
             motion_map = get_motion_map(self.prev_frame_gray, current_frame_gray)
@@ -65,10 +65,14 @@ class SaliCacheLlava(LlavaNextForConditionalGeneration):
 
         # Update for next frame
         self.prev_frame_gray = current_frame_gray
-        
+
         # --- 2. Spatial Saliency (U²-Net) ---
         # The saliency model expects a PIL Image
-        saliency_mask = self.saliency_model(Image.fromarray(dummy_image_np))
+        if self.current_raw_image is not None:
+            saliency_mask = self.saliency_model(self.current_raw_image)
+        else:
+            saliency_mask = np.zeros((336, 336))
+
         saliency_scores = get_patch_scores(saliency_mask, PATCH_SIZE, "max")
         saliency_scores = torch.tensor(saliency_scores, device=self.device)
 
@@ -88,6 +92,59 @@ class SaliCacheLlava(LlavaNextForConditionalGeneration):
 
         return policy
 
+
+    def apply_cache_optimization(self, past_key_values, policy):
+        """
+        Modify past_key_values according to policy per-patch.
+        policy: tensor of length N_patches with values {0=prune,1=quantize,2=keep}
+        """
+        if past_key_values is None:
+            return None
+
+        num_patches = NUM_PATCHES_PER_DIM ** 2
+        new_cache = DynamicCache()
+
+        for layer_idx in range(len(past_key_values)):
+            layer_k, layer_v = past_key_values[layer_idx]
+            seq_len = layer_k.shape[2]
+
+            if seq_len < num_patches:
+                # nothing to do; copy as-is
+                new_cache.update(layer_k, layer_v, layer_idx)
+                continue
+
+            old_seq_len = seq_len - num_patches
+            old_k = layer_k[:, :, :old_seq_len, :]
+            old_v = layer_v[:, :, :old_seq_len, :]
+
+            new_k = layer_k[:, :, old_seq_len:, :]
+            new_v = layer_v[:, :, old_seq_len:, :]
+
+            # Build list of kept indices
+            keep_mask = (policy != 0).cpu().numpy()
+            keep_indices = [i for i, k in enumerate(keep_mask) if k]
+
+            if len(keep_indices) == 0:
+                combined_k = old_k
+                combined_v = old_v
+            else:
+                kept_k = new_k[:, :, keep_indices, :]
+                kept_v = new_v[:, :, keep_indices, :]
+
+                # Quantize patches that have policy == 1
+                for qi, patch_pos in enumerate(keep_indices):
+                    if policy[patch_pos] == 1:
+                        # quantize the patch across heads/batch/dim
+                        kept_k[:, :, qi:qi+1, :] = quantize_tensor(kept_k[:, :, qi:qi+1, :])
+                        kept_v[:, :, qi:qi+1, :] = quantize_tensor(kept_v[:, :, qi:qi+1, :])
+
+                combined_k = torch.cat([old_k, kept_k], dim=2)
+                combined_v = torch.cat([old_v, kept_v], dim=2)
+
+            new_cache.update(combined_k, combined_v, layer_idx)
+
+        return new_cache
+
     def forward(
         self,
         input_ids: torch.LongTensor = None,
@@ -103,6 +160,8 @@ class SaliCacheLlava(LlavaNextForConditionalGeneration):
         # We only run this logic if it's a vision frame
         # (i.e., pixel_values are provided)
         cache_policy = None
+        # Accept raw PIL Image for better saliency/motion calculation
+        self.current_raw_image = kwargs.pop("raw_image", None)
         if pixel_values is not None:
             cache_policy = self.get_cache_policy(pixel_values)
 
@@ -120,27 +179,10 @@ class SaliCacheLlava(LlavaNextForConditionalGeneration):
         # This is where the magic happens
         
         if cache_policy is not None and outputs.past_key_values is not None:
-            
-            # TODO: This is the most complex part of the project.
-            # You need to write the logic to modify the 'past_key_values'
-            # tuple based on the 'cache_policy'
-            
-            # 'outputs.past_key_values' is a tuple of tuples:
-            # ( (layer_0_K, layer_0_V), (layer_1_K, layer_1_V), ... )
-            
-            # You need to iterate over each layer, identify the *new*
-            # KV vectors (which correspond to the 196 image patches),
-            # and then either:
-            #   - PRUNE them (delete them from the tensor)
-            #   - QUANTIZE them (apply quantize_tensor)
-            #   - KEEP them (do nothing)
-            
-            # This is a highly advanced, non-trivial operation.
-            # optimized_cache = self.apply_cache_optimization(
-            #     outputs.past_key_values, cache_policy
-            # )
-            # outputs.past_key_values = optimized_cache
-            
-            print(f"TODO: Apply cache policy {cache_policy.cpu().numpy()} to the new KV cache.")
+            optimized_cache = self.apply_cache_optimization(outputs.past_key_values, cache_policy)
+            outputs.past_key_values = optimized_cache
+
+        # Clear raw image pointer
+        self.current_raw_image = None
 
         return outputs

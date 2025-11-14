@@ -186,17 +186,28 @@ def main():
     print("Loading processor...")
     processor = AutoProcessor.from_pretrained(LLAVA_MODEL_ID)
 
-    print("Loading Sali-Cache LLaVA model (NOTE: Using placeholder saliency model)...")
-    # For now, use the base model since SaliCacheLlava requires real U2Net weights
-    # The optimization logic is TODO in the custom model
+    print("Loading Sali-Cache LLaVA model (with saliency wrapper)...")
+    # Load base model weights then wrap with our SaliCacheLlava class
     from transformers import LlavaNextForConditionalGeneration
-    model = LlavaNextForConditionalGeneration.from_pretrained(
+    base_model = LlavaNextForConditionalGeneration.from_pretrained(
         LLAVA_MODEL_ID,
         torch_dtype=torch.float16,
         device_map="auto"
-    ).eval()
-    
-    print("Model loaded successfully (NOTE: No cache optimization applied yet - U2Net and pruning logic are placeholders)")
+    )
+
+    # Initialize custom model with same config
+    config = base_model.config
+    model = SaliCacheLlava(config, u2net_weights_path=u2net_weights)
+
+    # Load pretrained weights where applicable
+    model.load_state_dict(base_model.state_dict(), strict=False)
+    # Ensure parameter dtypes align with pretrained weights
+    try:
+        model.half()
+    except Exception:
+        pass
+    model = model.eval()
+    print("Model loaded successfully (Sali-Cache wrapper initialized).")
 
     # --- 3. Video Processing Loop ---
     cap = cv2.VideoCapture(video_path)
@@ -222,6 +233,7 @@ def main():
         image = Image.fromarray(frame_rgb_resized)
 
         # Process inputs (image + text)
+        # Match input dtype to model (model parameters are in half precision)
         inputs = processor(text=PROMPT_TEMPLATE, images=image, return_tensors="pt").to(model.device, torch.float16)
 
         start = time.time()
@@ -230,26 +242,17 @@ def main():
             outputs = model(
                 **inputs,
                 past_key_values=past_key_values,
-                use_cache=True
+                use_cache=True,
+                raw_image=image
             )
             
-            # Get the full cache
+            # Get the (already optimized) cache from the model
             full_cache = outputs.past_key_values
-            
-            # Apply saliency-based pruning
-            motion_map = compute_motion_score(prev_gray, curr_gray_resized)
-            saliency_map = compute_saliency_score(frame_rgb_resized)
-            
-            if motion_map is not None:
-                # Prune cache based on motion and saliency
-                full_cache = prune_cache_by_importance(
-                    full_cache, motion_map, saliency_map, PRUNE_RATIO
-                )
-            
-            # Then apply sliding window truncation
+
+            # Apply sliding window truncation to enforce memory budget
             past_key_values = truncate_cache(full_cache, MAX_CACHE_PATCHES)
-            
-            # Update previous frame
+
+            # Update previous frame for future motion estimation inside the model
             prev_gray = curr_gray_resized
 
         elapsed = time.time() - start
