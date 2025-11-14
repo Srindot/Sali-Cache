@@ -3,6 +3,7 @@ import torch.nn as nn
 from transformers import LlavaNextForConditionalGeneration
 from PIL import Image
 import numpy as np
+import cv2
 
 # Import our helper files
 from .saliency.u2net import U2NetpWrapper

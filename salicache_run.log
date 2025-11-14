@@ -1,0 +1,108 @@
+nohup: ignoring input
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading processor...
+Loading Sali-Cache LLaVA model (NOTE: Using placeholder saliency model)...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.00it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.14it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.19it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.51it/s]
+Model loaded successfully (NOTE: No cache optimization applied yet - U2Net and pruning logic are placeholders)
+Sali-Cache Frame 0 processed. cache_patches=784 time=0.620s
+Sali-Cache Frame 1 processed. cache_patches=784 time=0.120s
+Sali-Cache Frame 2 processed. cache_patches=784 time=0.197s
+Sali-Cache Frame 3 processed. cache_patches=784 time=0.081s
+Sali-Cache Frame 4 processed. cache_patches=784 time=0.081s
+Sali-Cache Frame 5 processed. cache_patches=784 time=0.081s
+Sali-Cache Frame 6 processed. cache_patches=784 time=0.081s
+Sali-Cache Frame 7 processed. cache_patches=784 time=0.080s
+Sali-Cache Frame 8 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 9 processed. cache_patches=784 time=0.078s
+Sali-Cache Frame 10 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 11 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 12 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 13 processed. cache_patches=784 time=0.078s
+Sali-Cache Frame 14 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 15 processed. cache_patches=784 time=0.078s
+Sali-Cache Frame 16 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 17 processed. cache_patches=784 time=0.078s
+Sali-Cache Frame 18 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 19 processed. cache_patches=784 time=0.078s
+Sali-Cache Frame 20 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 21 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 22 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 23 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 24 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 25 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 26 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 27 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 28 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 29 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 30 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 31 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 32 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 33 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 34 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 35 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 36 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 37 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 38 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 39 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 40 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 41 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 42 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 43 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 44 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 45 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 46 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 47 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 48 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 49 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 50 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 51 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 52 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 53 processed. cache_patches=784 time=0.078s
+Sali-Cache Frame 54 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 55 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 56 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 57 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 58 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 59 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 60 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 61 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 62 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 63 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 64 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 65 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 66 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 67 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 68 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 69 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 70 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 71 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 72 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 73 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 74 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 75 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 76 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 77 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 78 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 79 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 80 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 81 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 82 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 83 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 84 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 85 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 86 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 87 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 88 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 89 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 90 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 91 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 92 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 93 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 94 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 95 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 96 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 97 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 98 processed. cache_patches=784 time=0.079s
+Sali-Cache Frame 99 processed. cache_patches=784 time=0.079s
+Sali-Cache experiment complete. Results saved to results/salicache.json

@@ -3,6 +3,7 @@ import torch.nn as nn
 from torchvision import transforms
 import numpy as np
 from PIL import Image
+import cv2
 
 # TODO:
 # You must DOWNLOAD the 'u2net.py' file from the official U²-Net repo

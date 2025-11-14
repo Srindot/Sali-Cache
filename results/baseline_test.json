@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "frame": 0,
+      "cache_patches": 784,
+      "time_s": 0.7060444355010986
+    },
+    {
+      "frame": 1,
+      "cache_patches": 784,
+      "time_s": 0.15731096267700195
+    },
+    {
+      "frame": 2,
+      "cache_patches": 784,
+      "time_s": 0.08047366142272949
+    },
+    {
+      "frame": 3,
+      "cache_patches": 784,
+      "time_s": 0.08029508590698242
+    },
+    {
+      "frame": 4,
+      "cache_patches": 784,
+      "time_s": 0.08027195930480957
+    }
+  ]
+}
