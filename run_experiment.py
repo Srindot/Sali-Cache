@@ -19,7 +19,7 @@ MAX_CACHE_PATCHES = 784  # Same as baseline for fair comparison
 # Your VQA prompt. This will "guide" the summarization.
 PROMPT_TEMPLATE = "[INST] <image>\nDescribe what is happening. [/INST]"
 
-# Saliency-based cache parameters
+# Saliency-based cache parameters (NOT USED - using in-model optimization)
 PRUNE_RATIO = 0.3  # Keep 70% of patches based on importance
 MOTION_WEIGHT = 0.6
 SALIENCY_WEIGHT = 0.4
@@ -162,6 +162,97 @@ def total_cache_patches(past_key_values):
     return 0
 
 
+def apply_sali_cache_optimization(model, past_key_values, raw_image):
+    """
+    Apply Sali-Cache optimization: compute motion+saliency policy and prune/quantize patches.
+    """
+    from utils.video_processing import get_motion_map
+    from utils.patch_utils import get_patch_scores
+    from utils.quantization import quantize_tensor
+    
+    MOTION_THRESHOLD = 0.3
+    SALIENCY_THRESHOLD = 0.6
+    PATCH_SIZE = 24
+    NUM_PATCHES = 196  # 14x14
+    
+    if past_key_values is None or len(past_key_values) == 0:
+        return past_key_values
+    
+    # Convert image to numpy for motion/saliency
+    img_np = np.array(raw_image.resize((336, 336)))
+    curr_gray = cv2.cvtColor(img_np, cv2.COLOR_RGB2GRAY)
+    
+    # Compute motion scores
+    if model.prev_frame_gray is None:
+        motion_scores = torch.ones(NUM_PATCHES, device='cuda')
+    else:
+        motion_map = get_motion_map(model.prev_frame_gray, curr_gray)
+        motion_scores_np = get_patch_scores(motion_map, PATCH_SIZE, "mean")
+        motion_scores = torch.tensor(motion_scores_np, device='cuda')
+    
+    model.prev_frame_gray = curr_gray
+    
+    # Compute saliency scores
+    saliency_mask = model.saliency_model(raw_image)
+    saliency_scores_np = get_patch_scores(saliency_mask, PATCH_SIZE, "max")
+    saliency_scores = torch.tensor(saliency_scores_np, device='cuda')
+    
+    # Create policy: 0=prune, 1=quantize, 2=keep
+    policy = torch.ones(NUM_PATCHES, device='cuda', dtype=torch.int)
+    policy[motion_scores < MOTION_THRESHOLD] = 0  # Prune static
+    is_salient = saliency_scores > SALIENCY_THRESHOLD
+    is_moving = motion_scores >= MOTION_THRESHOLD
+    policy[is_moving & is_salient] = 2  # Keep salient+moving at full precision
+    
+    # Store stats
+    model.last_pruned_count = int((policy == 0).sum())
+    model.last_quantized_count = int((policy == 1).sum())
+    model.last_kept_count = int((policy == 2).sum())
+    
+    # Apply optimization to cache
+    layer_k, _ = past_key_values[0]
+    seq_len = layer_k.shape[2]
+    
+    if seq_len < NUM_PATCHES:
+        return past_key_values  # Not enough to optimize
+    
+    new_cache = DynamicCache()
+    old_seq_len = seq_len - NUM_PATCHES
+    
+    for layer_idx in range(len(past_key_values)):
+        layer_k, layer_v = past_key_values[layer_idx]
+        
+        old_k = layer_k[:, :, :old_seq_len, :]
+        old_v = layer_v[:, :, :old_seq_len, :]
+        
+        new_k = layer_k[:, :, old_seq_len:, :]
+        new_v = layer_v[:, :, old_seq_len:, :]
+        
+        # Keep only non-pruned patches
+        keep_mask = (policy != 0).cpu().numpy()
+        keep_indices = [i for i, k in enumerate(keep_mask) if k]
+        
+        if len(keep_indices) == 0:
+            combined_k = old_k
+            combined_v = old_v
+        else:
+            kept_k = new_k[:, :, keep_indices, :]
+            kept_v = new_v[:, :, keep_indices, :]
+            
+            # Quantize patches with policy==1
+            for qi, patch_pos in enumerate(keep_indices):
+                if policy[patch_pos] == 1:
+                    kept_k[:, :, qi:qi+1, :] = quantize_tensor(kept_k[:, :, qi:qi+1, :])
+                    kept_v[:, :, qi:qi+1, :] = quantize_tensor(kept_v[:, :, qi:qi+1, :])
+            
+            combined_k = torch.cat([old_k, kept_k], dim=2)
+            combined_v = torch.cat([old_v, kept_v], dim=2)
+        
+        new_cache.update(combined_k, combined_v, layer_idx)
+    
+    return new_cache
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--video", type=str, default=os.environ.get("VIDEO_PATH", "data/sample_video.mp4"), help="Path to input video")
@@ -186,28 +277,31 @@ def main():
     print("Loading processor...")
     processor = AutoProcessor.from_pretrained(LLAVA_MODEL_ID)
 
-    print("Loading Sali-Cache LLaVA model (with saliency wrapper)...")
-    # Load base model weights then wrap with our SaliCacheLlava class
+    print("Loading base LLaVA model...")
+    # Load base model directly (fast)
     from transformers import LlavaNextForConditionalGeneration
-    base_model = LlavaNextForConditionalGeneration.from_pretrained(
+    model = LlavaNextForConditionalGeneration.from_pretrained(
         LLAVA_MODEL_ID,
         torch_dtype=torch.float16,
         device_map="auto"
-    )
-
-    # Initialize custom model with same config
-    config = base_model.config
-    model = SaliCacheLlava(config, u2net_weights_path=u2net_weights)
-
-    # Load pretrained weights where applicable
-    model.load_state_dict(base_model.state_dict(), strict=False)
-    # Ensure parameter dtypes align with pretrained weights
-    try:
-        model.half()
-    except Exception:
-        pass
-    model = model.eval()
-    print("Model loaded successfully (Sali-Cache wrapper initialized).")
+    ).eval()
+    
+    print("Initializing Sali-Cache optimization wrapper...")
+    # Add Sali-Cache optimization components without full model recreation
+    from models.saliency.u2net import U2NetpWrapper
+    from utils.video_processing import get_motion_map
+    from utils.patch_utils import get_patch_scores
+    
+    # Attach saliency model and state to the base model instance
+    model.saliency_model = U2NetpWrapper(u2net_weights)
+    model.saliency_model.eval()
+    model.prev_frame_gray = None
+    model.current_raw_image = None
+    model.last_pruned_count = 0
+    model.last_quantized_count = 0
+    model.last_kept_count = 0
+    
+    print("Model loaded successfully (Sali-Cache optimization attached).")
 
     # --- 3. Video Processing Loop ---
     cap = cv2.VideoCapture(video_path)
@@ -238,22 +332,24 @@ def main():
 
         start = time.time()
         with torch.no_grad():
-            # Call forward pass
+            # Call base model forward pass
             outputs = model(
                 **inputs,
                 past_key_values=past_key_values,
-                use_cache=True,
-                raw_image=image
+                use_cache=True
             )
             
-            # Get the (already optimized) cache from the model
+            # Apply Sali-Cache optimization to the output cache
             full_cache = outputs.past_key_values
-
-            # Apply sliding window truncation to enforce memory budget
-            past_key_values = truncate_cache(full_cache, MAX_CACHE_PATCHES)
-
-            # Update previous frame for future motion estimation inside the model
-            prev_gray = curr_gray_resized
+            optimized_cache = apply_sali_cache_optimization(model, full_cache, image)
+            
+            # Apply final truncation to enforce memory budget (but after optimization)
+            past_key_values = truncate_cache(optimized_cache, MAX_CACHE_PATCHES)
+            
+            # Get optimization stats from model
+            pruned = model.last_pruned_count
+            quantized = model.last_quantized_count
+            kept = model.last_kept_count
 
         elapsed = time.time() - start
         cache_patches = total_cache_patches(past_key_values)
@@ -261,10 +357,13 @@ def main():
         results.append({
             "frame": frame_num,
             "cache_patches": cache_patches,
-            "time_s": elapsed
+            "time_s": elapsed,
+            "pruned_patches": pruned,
+            "quantized_patches": quantized,
+            "kept_patches": kept
         })
 
-        print(f"Sali-Cache Frame {frame_num} processed. cache_patches={cache_patches} time={elapsed:.3f}s")
+        print(f"Sali-Cache Frame {frame_num}: cache={cache_patches} time={elapsed:.3f}s [pruned={pruned}, quant={quantized}, kept={kept}]")
         
         frame_num += 1
         if frame_num >= max_frames:

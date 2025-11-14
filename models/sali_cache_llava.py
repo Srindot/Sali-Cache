@@ -13,8 +13,8 @@ from utils.quantization import quantize_tensor, dequantize_tensor
 
 # --- Configuration ---
 # These are "hyperparameters" you will tune
-MOTION_THRESHOLD = 0.5   # How much motion to count as "new"
-SALIENCY_THRESHOLD = 0.5 # What score counts as "important"
+MOTION_THRESHOLD = 0.3   # Lower = prune more static patches (was 0.5)
+SALIENCY_THRESHOLD = 0.6 # Higher = keep fewer as full precision (was 0.5)
 PATCH_SIZE = 24          # For LLaVA 1.6
 NUM_PATCHES_PER_DIM = 14 # 336 / 24 = 14
 
@@ -33,6 +33,12 @@ class SaliCacheLlava(LlavaNextForConditionalGeneration):
         # 2. Initialize Optical Flow state
         self.prev_frame_gray = None
         self.current_raw_image = None
+        
+        # 3. Track optimization stats
+        self.last_policy = None
+        self.last_pruned_count = 0
+        self.last_quantized_count = 0
+        self.last_kept_count = 0
 
     @torch.no_grad()
     def get_cache_policy(self, pixel_values):
@@ -89,6 +95,12 @@ class SaliCacheLlava(LlavaNextForConditionalGeneration):
         is_salient = saliency_scores > SALIENCY_THRESHOLD
         is_moving = motion_scores >= MOTION_THRESHOLD
         policy[is_moving & is_salient] = 2
+        
+        # Store stats
+        self.last_policy = policy
+        self.last_pruned_count = int((policy == 0).sum())
+        self.last_quantized_count = int((policy == 1).sum())
+        self.last_kept_count = int((policy == 2).sum())
 
         return policy
 
