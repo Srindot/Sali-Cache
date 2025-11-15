@@ -31,12 +31,13 @@ LLAVA_MODEL_ID = "llava-hf/llava-v1.6-mistral-7b-hf"
 MAX_CACHE_PATCHES = 784  # Fair comparison budget
 
 # MULTI-LEVEL QUANTIZATION THRESHOLDS (based on combined saliency score)
-# Combined score = motion_score * 0.5 + saliency_score * 0.5
-PRUNE_THRESH = 0.05      # < 0.05: delete (very low importance)
-INT4_THRESH = 0.15       # 0.05-0.15: 4-bit quantization (low importance)
-INT8_THRESH = 0.35       # 0.15-0.35: 8-bit quantization (medium importance)
-FP16_THRESH = 0.60       # 0.35-0.60: 16-bit quantization (high importance)
-# > 0.60: FP32 full precision (critical importance)
+# Combined score = motion_score * 0.6 + saliency_score * 0.4
+# Adjusted thresholds to increase kept (FP32) proportion and reduce aggressive pruning
+PRUNE_THRESH = 0.03      # < 0.03: delete (very low importance)
+INT4_THRESH = 0.10       # 0.03-0.10: 4-bit quantization (low importance)
+INT8_THRESH = 0.25       # 0.10-0.25: 8-bit quantization (medium importance)
+FP16_THRESH = 0.38       # 0.25-0.38: 16-bit quantization (high importance)
+# >= 0.38: FP32 full precision (critical importance) - INCREASED!
 
 # Target distribution: ~5% prune, ~20% INT4, ~40% INT8, ~30% FP16, ~5% FP32
 
