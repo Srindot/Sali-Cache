@@ -1,0 +1,52 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading model on cuda...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.20it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.32it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.35it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.73it/s]
+/home/vishnusai/Sali-Cache/.venv/lib/python3.10/site-packages/accelerate/utils/modeling.py:1598: UserWarning: The following device_map keys do not match any submodules in the model: ['model.image_newline']
+  warnings.warn(
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+
+Processing 100 frames...
+================================================================================
+
+[1/2] Running BASELINE...
+Frame 0: cache=784 time=0.633s
+Frame 10: cache=784 time=0.059s
+Frame 20: cache=784 time=0.049s
+Frame 30: cache=784 time=0.048s
+Frame 40: cache=784 time=0.049s
+Frame 50: cache=784 time=0.048s
+Frame 60: cache=784 time=0.049s
+Frame 70: cache=784 time=0.048s
+Frame 80: cache=784 time=0.048s
+Frame 90: cache=784 time=0.049s
+
+[2/2] Running SALI-CACHE with MULTI-LEVEL QUANTIZATION...
+Frame 0: cache=784 time=0.044s [prune=0, int4=0, int8=0, fp16=186, fp32=10]
+Frame 10: cache=784 time=0.049s [prune=36, int4=68, int8=90, fp16=2, fp32=0]
+Frame 20: cache=784 time=0.049s [prune=25, int4=20, int8=89, fp16=62, fp32=0]
+Frame 30: cache=784 time=0.049s [prune=48, int4=76, int8=69, fp16=3, fp32=0]
+Frame 40: cache=784 time=0.049s [prune=26, int4=19, int8=104, fp16=47, fp32=0]
+Frame 50: cache=784 time=0.049s [prune=3, int4=45, int8=137, fp16=11, fp32=0]
+Frame 60: cache=784 time=0.048s [prune=0, int4=6, int8=181, fp16=9, fp32=0]
+Frame 70: cache=784 time=0.049s [prune=1, int4=5, int8=145, fp16=45, fp32=0]
+Frame 80: cache=784 time=0.048s [prune=4, int4=7, int8=45, fp16=140, fp32=0]
+Frame 90: cache=784 time=0.049s [prune=1, int4=7, int8=136, fp16=52, fp32=0]
+
+================================================================================
+RESULTS SUMMARY
+================================================================================
+
+Timing:
+  Baseline Avg:   0.0574s per frame
+  Sali-Cache Avg: 0.0488s per frame
+
+Multi-Level Policy Distribution:
+  Pruned (deleted):  1503 (  7.7%)
+  INT4 (4-bit):      2254 ( 11.5%)
+  INT8 (8-bit):      9896 ( 50.5%)
+  FP16 (16-bit):     5930 ( 30.3%)
+  FP32 (full):         17 (  0.1%)
+  ✅ LOW PRUNING (7.7%) - Using graduated compression!
+
+✅ Results saved to results/multilevel_results.json
+================================================================================
