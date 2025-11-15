@@ -1,111 +1,110 @@
-nohup: ignoring input
 Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
 `torch_dtype` is deprecated! Use `dtype` instead!
 Loading processor...
 Loading base LLaVA model...
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.04it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.17it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.22it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.55it/s]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.05it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.18it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.22it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.55it/s]
 Initializing Sali-Cache optimization wrapper...
 WARNING: Using U2NETP_Placeholder. Download the real model!
 TODO: Would load U2Net weights from models/saliency/u2netp.pth
 Model loaded successfully (Sali-Cache optimization attached).
-Sali-Cache Frame 0: cache=784 time=0.946s [pruned=0, quant=0, kept=196]
-Sali-Cache Frame 1: cache=784 time=0.189s [pruned=193, quant=0, kept=3]
-Sali-Cache Frame 2: cache=784 time=0.311s [pruned=138, quant=0, kept=58]
-Sali-Cache Frame 3: cache=784 time=0.246s [pruned=82, quant=0, kept=114]
-Sali-Cache Frame 4: cache=784 time=0.241s [pruned=90, quant=0, kept=106]
-Sali-Cache Frame 5: cache=784 time=0.169s [pruned=193, quant=0, kept=3]
-Sali-Cache Frame 6: cache=784 time=0.172s [pruned=190, quant=0, kept=6]
-Sali-Cache Frame 7: cache=784 time=0.254s [pruned=75, quant=0, kept=121]
-Sali-Cache Frame 8: cache=784 time=0.252s [pruned=77, quant=0, kept=119]
-Sali-Cache Frame 9: cache=784 time=0.248s [pruned=80, quant=0, kept=116]
-Sali-Cache Frame 10: cache=784 time=0.228s [pruned=79, quant=0, kept=117]
-Sali-Cache Frame 11: cache=784 time=0.205s [pruned=118, quant=0, kept=78]
-Sali-Cache Frame 12: cache=784 time=0.164s [pruned=194, quant=0, kept=2]
-Sali-Cache Frame 13: cache=784 time=0.196s [pruned=136, quant=0, kept=60]
-Sali-Cache Frame 14: cache=784 time=0.166s [pruned=188, quant=0, kept=8]
-Sali-Cache Frame 15: cache=784 time=0.162s [pruned=195, quant=0, kept=1]
-Sali-Cache Frame 16: cache=784 time=0.173s [pruned=179, quant=0, kept=17]
-Sali-Cache Frame 17: cache=784 time=0.184s [pruned=158, quant=0, kept=38]
-Sali-Cache Frame 18: cache=784 time=0.173s [pruned=178, quant=0, kept=18]
-Sali-Cache Frame 19: cache=784 time=0.198s [pruned=133, quant=0, kept=63]
-Sali-Cache Frame 20: cache=784 time=0.205s [pruned=121, quant=0, kept=75]
-Sali-Cache Frame 21: cache=784 time=0.188s [pruned=149, quant=0, kept=47]
-Sali-Cache Frame 22: cache=784 time=0.209s [pruned=112, quant=0, kept=84]
-Sali-Cache Frame 23: cache=784 time=0.183s [pruned=159, quant=0, kept=37]
-Sali-Cache Frame 24: cache=784 time=0.160s [pruned=196, quant=0, kept=0]
-Sali-Cache Frame 25: cache=784 time=0.180s [pruned=167, quant=0, kept=29]
-Sali-Cache Frame 26: cache=784 time=0.190s [pruned=147, quant=0, kept=49]
-Sali-Cache Frame 27: cache=784 time=0.204s [pruned=121, quant=0, kept=75]
-Sali-Cache Frame 28: cache=784 time=0.222s [pruned=90, quant=0, kept=106]
-Sali-Cache Frame 29: cache=784 time=0.227s [pruned=80, quant=0, kept=116]
-Sali-Cache Frame 30: cache=784 time=0.214s [pruned=104, quant=0, kept=92]
-Sali-Cache Frame 31: cache=784 time=0.215s [pruned=104, quant=0, kept=92]
-Sali-Cache Frame 32: cache=784 time=0.216s [pruned=99, quant=0, kept=97]
-Sali-Cache Frame 33: cache=784 time=0.209s [pruned=115, quant=0, kept=81]
-Sali-Cache Frame 34: cache=784 time=0.232s [pruned=71, quant=0, kept=125]
-Sali-Cache Frame 35: cache=784 time=0.208s [pruned=113, quant=0, kept=83]
-Sali-Cache Frame 36: cache=784 time=0.232s [pruned=74, quant=0, kept=122]
-Sali-Cache Frame 37: cache=784 time=0.243s [pruned=59, quant=0, kept=137]
-Sali-Cache Frame 38: cache=784 time=0.213s [pruned=105, quant=0, kept=91]
-Sali-Cache Frame 39: cache=784 time=0.189s [pruned=149, quant=0, kept=47]
-Sali-Cache Frame 40: cache=784 time=0.163s [pruned=194, quant=0, kept=2]
-Sali-Cache Frame 41: cache=784 time=0.164s [pruned=194, quant=0, kept=2]
-Sali-Cache Frame 42: cache=784 time=0.211s [pruned=110, quant=0, kept=86]
-Sali-Cache Frame 43: cache=784 time=0.223s [pruned=87, quant=0, kept=109]
-Sali-Cache Frame 44: cache=784 time=0.233s [pruned=70, quant=0, kept=126]
-Sali-Cache Frame 45: cache=784 time=0.218s [pruned=97, quant=0, kept=99]
-Sali-Cache Frame 46: cache=784 time=0.212s [pruned=106, quant=0, kept=90]
-Sali-Cache Frame 47: cache=784 time=0.163s [pruned=193, quant=0, kept=3]
-Sali-Cache Frame 48: cache=784 time=0.191s [pruned=146, quant=0, kept=50]
-Sali-Cache Frame 49: cache=784 time=0.220s [pruned=91, quant=0, kept=105]
-Sali-Cache Frame 50: cache=784 time=0.230s [pruned=76, quant=0, kept=120]
-Sali-Cache Frame 51: cache=784 time=0.175s [pruned=173, quant=0, kept=23]
-Sali-Cache Frame 52: cache=784 time=0.173s [pruned=178, quant=0, kept=18]
-Sali-Cache Frame 53: cache=784 time=0.236s [pruned=66, quant=0, kept=130]
-Sali-Cache Frame 54: cache=784 time=0.226s [pruned=82, quant=0, kept=114]
-Sali-Cache Frame 55: cache=784 time=0.216s [pruned=101, quant=0, kept=95]
-Sali-Cache Frame 56: cache=784 time=0.179s [pruned=168, quant=0, kept=28]
-Sali-Cache Frame 57: cache=784 time=0.230s [pruned=76, quant=0, kept=120]
-Sali-Cache Frame 58: cache=784 time=0.224s [pruned=86, quant=0, kept=110]
-Sali-Cache Frame 59: cache=784 time=0.166s [pruned=190, quant=0, kept=6]
-Sali-Cache Frame 60: cache=784 time=0.177s [pruned=172, quant=0, kept=24]
-Sali-Cache Frame 61: cache=784 time=0.233s [pruned=70, quant=0, kept=126]
-Sali-Cache Frame 62: cache=784 time=0.160s [pruned=196, quant=0, kept=0]
-Sali-Cache Frame 63: cache=784 time=0.223s [pruned=89, quant=0, kept=107]
-Sali-Cache Frame 64: cache=784 time=0.163s [pruned=195, quant=0, kept=1]
-Sali-Cache Frame 65: cache=784 time=0.163s [pruned=195, quant=0, kept=1]
-Sali-Cache Frame 66: cache=784 time=0.165s [pruned=193, quant=0, kept=3]
-Sali-Cache Frame 67: cache=784 time=0.169s [pruned=185, quant=0, kept=11]
-Sali-Cache Frame 68: cache=784 time=0.190s [pruned=147, quant=0, kept=49]
-Sali-Cache Frame 69: cache=784 time=0.224s [pruned=89, quant=0, kept=107]
-Sali-Cache Frame 70: cache=784 time=0.167s [pruned=189, quant=0, kept=7]
-Sali-Cache Frame 71: cache=784 time=0.160s [pruned=196, quant=0, kept=0]
-Sali-Cache Frame 72: cache=784 time=0.164s [pruned=195, quant=0, kept=1]
-Sali-Cache Frame 73: cache=784 time=0.215s [pruned=103, quant=0, kept=93]
-Sali-Cache Frame 74: cache=784 time=0.229s [pruned=80, quant=0, kept=116]
-Sali-Cache Frame 75: cache=784 time=0.231s [pruned=74, quant=0, kept=122]
-Sali-Cache Frame 76: cache=784 time=0.220s [pruned=92, quant=0, kept=104]
-Sali-Cache Frame 77: cache=784 time=0.228s [pruned=80, quant=0, kept=116]
-Sali-Cache Frame 78: cache=784 time=0.199s [pruned=130, quant=0, kept=66]
-Sali-Cache Frame 79: cache=784 time=0.171s [pruned=182, quant=0, kept=14]
-Sali-Cache Frame 80: cache=784 time=0.217s [pruned=100, quant=0, kept=96]
-Sali-Cache Frame 81: cache=784 time=0.227s [pruned=83, quant=0, kept=113]
-Sali-Cache Frame 82: cache=784 time=0.222s [pruned=91, quant=0, kept=105]
-Sali-Cache Frame 83: cache=784 time=0.196s [pruned=137, quant=0, kept=59]
-Sali-Cache Frame 84: cache=784 time=0.229s [pruned=77, quant=0, kept=119]
-Sali-Cache Frame 85: cache=784 time=0.179s [pruned=166, quant=0, kept=30]
-Sali-Cache Frame 86: cache=784 time=0.239s [pruned=60, quant=0, kept=136]
-Sali-Cache Frame 87: cache=784 time=0.205s [pruned=120, quant=0, kept=76]
-Sali-Cache Frame 88: cache=784 time=0.177s [pruned=170, quant=0, kept=26]
-Sali-Cache Frame 89: cache=784 time=0.167s [pruned=189, quant=0, kept=7]
-Sali-Cache Frame 90: cache=784 time=0.166s [pruned=191, quant=0, kept=5]
-Sali-Cache Frame 91: cache=784 time=0.164s [pruned=194, quant=0, kept=2]
-Sali-Cache Frame 92: cache=784 time=0.160s [pruned=196, quant=0, kept=0]
-Sali-Cache Frame 93: cache=784 time=0.160s [pruned=196, quant=0, kept=0]
-Sali-Cache Frame 94: cache=784 time=0.225s [pruned=83, quant=0, kept=113]
-Sali-Cache Frame 95: cache=784 time=0.167s [pruned=189, quant=0, kept=7]
-Sali-Cache Frame 96: cache=784 time=0.226s [pruned=83, quant=0, kept=113]
-Sali-Cache Frame 97: cache=784 time=0.163s [pruned=195, quant=0, kept=1]
-Sali-Cache Frame 98: cache=784 time=0.220s [pruned=95, quant=0, kept=101]
-Sali-Cache Frame 99: cache=784 time=0.160s [pruned=196, quant=0, kept=0]
+Sali-Cache Frame 0: cache=784 time=0.990s [pruned=0, quant=0, kept=196] (before_opt=1192, after_opt=1192)
+Sali-Cache Frame 1: cache=784 time=0.202s [pruned=175, quant=0, kept=21] (before_opt=1976, after_opt=1801)
+Sali-Cache Frame 2: cache=784 time=0.183s [pruned=180, quant=0, kept=16] (before_opt=1976, after_opt=1796)
+Sali-Cache Frame 3: cache=784 time=0.184s [pruned=171, quant=0, kept=25] (before_opt=1976, after_opt=1805)
+Sali-Cache Frame 4: cache=784 time=0.178s [pruned=183, quant=0, kept=13] (before_opt=1976, after_opt=1793)
+Sali-Cache Frame 5: cache=784 time=0.170s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 6: cache=784 time=0.182s [pruned=180, quant=0, kept=16] (before_opt=1976, after_opt=1796)
+Sali-Cache Frame 7: cache=784 time=0.179s [pruned=180, quant=0, kept=16] (before_opt=1976, after_opt=1796)
+Sali-Cache Frame 8: cache=784 time=0.178s [pruned=183, quant=0, kept=13] (before_opt=1976, after_opt=1793)
+Sali-Cache Frame 9: cache=784 time=0.177s [pruned=183, quant=0, kept=13] (before_opt=1976, after_opt=1793)
+Sali-Cache Frame 10: cache=784 time=0.177s [pruned=184, quant=0, kept=12] (before_opt=1976, after_opt=1792)
+Sali-Cache Frame 11: cache=784 time=0.176s [pruned=185, quant=0, kept=11] (before_opt=1976, after_opt=1791)
+Sali-Cache Frame 12: cache=784 time=0.172s [pruned=188, quant=0, kept=8] (before_opt=1976, after_opt=1788)
+Sali-Cache Frame 13: cache=784 time=0.165s [pruned=195, quant=0, kept=1] (before_opt=1976, after_opt=1781)
+Sali-Cache Frame 14: cache=784 time=0.175s [pruned=178, quant=0, kept=18] (before_opt=1976, after_opt=1798)
+Sali-Cache Frame 15: cache=784 time=0.172s [pruned=182, quant=0, kept=14] (before_opt=1976, after_opt=1794)
+Sali-Cache Frame 16: cache=784 time=0.175s [pruned=178, quant=0, kept=18] (before_opt=1976, after_opt=1798)
+Sali-Cache Frame 17: cache=784 time=0.171s [pruned=184, quant=0, kept=12] (before_opt=1976, after_opt=1792)
+Sali-Cache Frame 18: cache=784 time=0.170s [pruned=186, quant=0, kept=10] (before_opt=1976, after_opt=1790)
+Sali-Cache Frame 19: cache=784 time=0.168s [pruned=189, quant=0, kept=7] (before_opt=1976, after_opt=1787)
+Sali-Cache Frame 20: cache=784 time=0.168s [pruned=189, quant=0, kept=7] (before_opt=1976, after_opt=1787)
+Sali-Cache Frame 21: cache=784 time=0.165s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 22: cache=784 time=0.166s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 23: cache=784 time=0.166s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 24: cache=784 time=0.168s [pruned=191, quant=0, kept=5] (before_opt=1976, after_opt=1785)
+Sali-Cache Frame 25: cache=784 time=0.166s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 26: cache=784 time=0.165s [pruned=195, quant=0, kept=1] (before_opt=1976, after_opt=1781)
+Sali-Cache Frame 27: cache=784 time=0.166s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 28: cache=784 time=0.166s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 29: cache=784 time=0.167s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 30: cache=784 time=0.162s [pruned=196, quant=0, kept=0] (before_opt=1976, after_opt=1780)
+Sali-Cache Frame 31: cache=784 time=0.168s [pruned=191, quant=0, kept=5] (before_opt=1976, after_opt=1785)
+Sali-Cache Frame 32: cache=784 time=0.166s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 33: cache=784 time=0.166s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 34: cache=784 time=0.166s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 35: cache=784 time=0.167s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 36: cache=784 time=0.165s [pruned=195, quant=0, kept=1] (before_opt=1976, after_opt=1781)
+Sali-Cache Frame 37: cache=784 time=0.167s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 38: cache=784 time=0.166s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 39: cache=784 time=0.167s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 40: cache=784 time=0.165s [pruned=195, quant=0, kept=1] (before_opt=1976, after_opt=1781)
+Sali-Cache Frame 41: cache=784 time=0.166s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 42: cache=784 time=0.166s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 43: cache=784 time=0.166s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 44: cache=784 time=0.166s [pruned=191, quant=0, kept=5] (before_opt=1976, after_opt=1785)
+Sali-Cache Frame 45: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 46: cache=784 time=0.166s [pruned=195, quant=0, kept=1] (before_opt=1976, after_opt=1781)
+Sali-Cache Frame 47: cache=784 time=0.167s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 48: cache=784 time=0.165s [pruned=195, quant=0, kept=1] (before_opt=1976, after_opt=1781)
+Sali-Cache Frame 49: cache=784 time=0.165s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 50: cache=784 time=0.166s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 51: cache=784 time=0.164s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 52: cache=784 time=0.189s [pruned=155, quant=0, kept=41] (before_opt=1976, after_opt=1821)
+Sali-Cache Frame 53: cache=784 time=0.165s [pruned=195, quant=0, kept=1] (before_opt=1976, after_opt=1781)
+Sali-Cache Frame 54: cache=784 time=0.162s [pruned=196, quant=0, kept=0] (before_opt=1976, after_opt=1780)
+Sali-Cache Frame 55: cache=784 time=0.161s [pruned=196, quant=0, kept=0] (before_opt=1976, after_opt=1780)
+Sali-Cache Frame 56: cache=784 time=0.161s [pruned=196, quant=0, kept=0] (before_opt=1976, after_opt=1780)
+Sali-Cache Frame 57: cache=784 time=0.165s [pruned=195, quant=0, kept=1] (before_opt=1976, after_opt=1781)
+Sali-Cache Frame 58: cache=784 time=0.162s [pruned=196, quant=0, kept=0] (before_opt=1976, after_opt=1780)
+Sali-Cache Frame 59: cache=784 time=0.165s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 60: cache=784 time=0.166s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 61: cache=784 time=0.165s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 62: cache=784 time=0.165s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 63: cache=784 time=0.165s [pruned=195, quant=0, kept=1] (before_opt=1976, after_opt=1781)
+Sali-Cache Frame 64: cache=784 time=0.166s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 65: cache=784 time=0.166s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 66: cache=784 time=0.166s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 67: cache=784 time=0.167s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 68: cache=784 time=0.167s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 69: cache=784 time=0.167s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 70: cache=784 time=0.167s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 71: cache=784 time=0.167s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 72: cache=784 time=0.167s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 73: cache=784 time=0.166s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 74: cache=784 time=0.167s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 75: cache=784 time=0.168s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 76: cache=784 time=0.166s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 77: cache=784 time=0.166s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 78: cache=784 time=0.168s [pruned=191, quant=0, kept=5] (before_opt=1976, after_opt=1785)
+Sali-Cache Frame 79: cache=784 time=0.168s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 80: cache=784 time=0.167s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 81: cache=784 time=0.166s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 82: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 83: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 84: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 85: cache=784 time=0.166s [pruned=193, quant=0, kept=3] (before_opt=1976, after_opt=1783)
+Sali-Cache Frame 86: cache=784 time=0.168s [pruned=191, quant=0, kept=5] (before_opt=1976, after_opt=1785)
+Sali-Cache Frame 87: cache=784 time=0.166s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 88: cache=784 time=0.166s [pruned=194, quant=0, kept=2] (before_opt=1976, after_opt=1782)
+Sali-Cache Frame 89: cache=784 time=0.167s [pruned=191, quant=0, kept=5] (before_opt=1976, after_opt=1785)
+Sali-Cache Frame 90: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 91: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 92: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 93: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 94: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 95: cache=784 time=0.166s [pruned=192, quant=0, kept=4] (before_opt=1976, after_opt=1784)
+Sali-Cache Frame 96: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 97: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 98: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
+Sali-Cache Frame 99: cache=784 time=0.168s [pruned=190, quant=0, kept=6] (before_opt=1976, after_opt=1786)
 Sali-Cache experiment complete. Results saved to results/salicache.json

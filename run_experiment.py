@@ -14,7 +14,7 @@ from models.sali_cache_llava import SaliCacheLlava
 # --- 1. Configuration ---
 LLAVA_MODEL_ID = "llava-hf/llava-v1.6-mistral-7b-hf"
 U2NET_WEIGHTS_PATH = "models/saliency/u2netp.pth"
-MAX_CACHE_PATCHES = 1500  # Larger than baseline to show Sali-Cache can handle more context
+MAX_CACHE_PATCHES = 784  # MUST match baseline for fair comparison!
 
 # Your VQA prompt. This will "guide" the summarization.
 PROMPT_TEMPLATE = "[INST] <image>\nDescribe what is happening. [/INST]"
