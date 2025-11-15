@@ -1,0 +1,970 @@
+{
+  "baseline": {
+    "model": "baseline",
+    "accuracy": 0.0,
+    "correct": 0,
+    "total": 50,
+    "cache_size": 784,
+    "results": [
+      {
+        "video_id": "6513",
+        "question": "what are three people sitting on?",
+        "ground_truth": "couch",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.7930519580841064,
+        "cache_size": 1198
+      },
+      {
+        "video_id": "6513",
+        "question": "what is a family having?",
+        "ground_truth": "coversation",
+        "prediction": "A family having?",
+        "correct": false,
+        "time_s": 1.366455078125,
+        "cache_size": 1201
+      },
+      {
+        "video_id": "6513",
+        "question": "what plays?",
+        "ground_truth": "music",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3160953521728516,
+        "cache_size": 1194
+      },
+      {
+        "video_id": "6513",
+        "question": "what is playing?",
+        "ground_truth": "music",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.297132968902588,
+        "cache_size": 1195
+      },
+      {
+        "video_id": "6513",
+        "question": "what does the girl sing on?",
+        "ground_truth": "couch",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.2892379760742188,
+        "cache_size": 1198
+      },
+      {
+        "video_id": "6513",
+        "question": "what is a music video doing?",
+        "ground_truth": "feature",
+        "prediction": "A music video, donde, se puede ver la",
+        "correct": false,
+        "time_s": 1.5303339958190918,
+        "cache_size": 1206
+      },
+      {
+        "video_id": "6513",
+        "question": "what are people doing?",
+        "ground_truth": "sit",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3182942867279053,
+        "cache_size": 1196
+      },
+      {
+        "video_id": "6513",
+        "question": "what are three people doing?",
+        "ground_truth": "sit",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3102507591247559,
+        "cache_size": 1197
+      },
+      {
+        "video_id": "6513",
+        "question": "what are three young people doing?",
+        "ground_truth": "sit",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.2895536422729492,
+        "cache_size": 1198
+      },
+      {
+        "video_id": "6513",
+        "question": "what are two girls and a guy doing?",
+        "ground_truth": "talk",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.295776605606079,
+        "cache_size": 1200
+      },
+      {
+        "video_id": "6513",
+        "question": "what is young people doing?",
+        "ground_truth": "talk",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.2959940433502197,
+        "cache_size": 1197
+      },
+      {
+        "video_id": "6513",
+        "question": "what is having coversation?",
+        "ground_truth": "family",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3153076171875,
+        "cache_size": 1197
+      },
+      {
+        "video_id": "6513",
+        "question": "what does a woman sing to?",
+        "ground_truth": "camera",
+        "prediction": "A woman singt?",
+        "correct": false,
+        "time_s": 1.4732263088226318,
+        "cache_size": 1203
+      },
+      {
+        "video_id": "6513",
+        "question": "how many people are sitting on a couch?",
+        "ground_truth": "three",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3088514804840088,
+        "cache_size": 1200
+      },
+      {
+        "video_id": "6513",
+        "question": "what is a woman singing with others in the background?",
+        "ground_truth": "song",
+        "prediction": "A woman singend",
+        "correct": false,
+        "time_s": 1.395545244216919,
+        "cache_size": 1207
+      },
+      {
+        "video_id": "6513",
+        "question": "what are two girls and a guy talking on while music is playing?",
+        "ground_truth": "couch",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.291168451309204,
+        "cache_size": 1205
+      },
+      {
+        "video_id": "6513",
+        "question": "what are people sitting on arguing while music plays?",
+        "ground_truth": "couch",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3130385875701904,
+        "cache_size": 1201
+      },
+      {
+        "video_id": "6513",
+        "question": "who is singing a song with others in the background?",
+        "ground_truth": "woman",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3165853023529053,
+        "cache_size": 1202
+      },
+      {
+        "video_id": "6513",
+        "question": "how many young people are sitting on a couch?",
+        "ground_truth": "three",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3256480693817139,
+        "cache_size": 1201
+      },
+      {
+        "video_id": "6513",
+        "question": "what made video of a popular song voiced over?",
+        "ground_truth": "home",
+        "prediction": "Lo s'ai, je ne sais que",
+        "correct": false,
+        "time_s": 1.557905673980713,
+        "cache_size": 1210
+      },
+      {
+        "video_id": "6513",
+        "question": "who sings i wish that i could be like the cool kids?",
+        "ground_truth": "girl",
+        "prediction": "I'm sik, menn",
+        "correct": false,
+        "time_s": 1.493006706237793,
+        "cache_size": 1213
+      },
+      {
+        "video_id": "6513",
+        "question": "what are three young people sitting on?",
+        "ground_truth": "couch",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.309340000152588,
+        "cache_size": 1199
+      },
+      {
+        "video_id": "6513",
+        "question": "what are other young people interacting with each other in?",
+        "ground_truth": "background",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3073980808258057,
+        "cache_size": 1203
+      },
+      {
+        "video_id": "6513",
+        "question": "who sings to the camera?",
+        "ground_truth": "woman",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3136529922485352,
+        "cache_size": 1198
+      },
+      {
+        "video_id": "6513",
+        "question": "what then go outside to see the sunset?",
+        "ground_truth": "lip",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.2948896884918213,
+        "cache_size": 1201
+      },
+      {
+        "video_id": "6513",
+        "question": "who sings on the couch?",
+        "ground_truth": "girl",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.2958400249481201,
+        "cache_size": 1198
+      },
+      {
+        "video_id": "6514",
+        "question": "what does a person on a motorbike riding thru?",
+        "ground_truth": "snow",
+        "prediction": "A person estando en una motocicla",
+        "correct": false,
+        "time_s": 1.4621026515960693,
+        "cache_size": 1212
+      },
+      {
+        "video_id": "6514",
+        "question": "what goes into a skier riding down a mountain?",
+        "ground_truth": "snow",
+        "prediction": "A skier riding down a monta\u00f1a",
+        "correct": false,
+        "time_s": 1.4640731811523438,
+        "cache_size": 1210
+      },
+      {
+        "video_id": "6514",
+        "question": "who is riding a bike on a narrow trail?",
+        "ground_truth": "someone",
+        "prediction": "La bicicula es una bicic",
+        "correct": false,
+        "time_s": 1.5475373268127441,
+        "cache_size": 1209
+      },
+      {
+        "video_id": "6514",
+        "question": "who is riding waves and a person on a dirt bike riding a trail?",
+        "ground_truth": "surfer",
+        "prediction": "La personne sur la personne sur la person",
+        "correct": false,
+        "time_s": 1.487520456314087,
+        "cache_size": 1214
+      },
+      {
+        "video_id": "6514",
+        "question": "who is dirt biking?",
+        "ground_truth": "guy",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.2959251403808594,
+        "cache_size": 1197
+      },
+      {
+        "video_id": "6514",
+        "question": "what is a girl doing?",
+        "ground_truth": "surf",
+        "prediction": "A girl estando en una ola",
+        "correct": false,
+        "time_s": 1.4714393615722656,
+        "cache_size": 1205
+      },
+      {
+        "video_id": "6514",
+        "question": "what is a woman doing?",
+        "ground_truth": "skate",
+        "prediction": "A woman is surfant, surfe en",
+        "correct": false,
+        "time_s": 1.457690715789795,
+        "cache_size": 1205
+      },
+      {
+        "video_id": "6514",
+        "question": "what is someone riding on a narrow trail?",
+        "ground_truth": "bike",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.2997503280639648,
+        "cache_size": 1200
+      },
+      {
+        "video_id": "6514",
+        "question": "what is a guy riding on mountains?",
+        "ground_truth": "bike",
+        "prediction": "A guy ridon monta\u00f1as",
+        "correct": false,
+        "time_s": 1.55362868309021,
+        "cache_size": 1207
+      },
+      {
+        "video_id": "6514",
+        "question": "what sports being showcased to techno music?",
+        "ground_truth": "extreme",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3319175243377686,
+        "cache_size": 1202
+      },
+      {
+        "video_id": "6514",
+        "question": "who is riding a bike on mountains?",
+        "ground_truth": "guy",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3245949745178223,
+        "cache_size": 1199
+      },
+      {
+        "video_id": "6514",
+        "question": "who rides the wave?",
+        "ground_truth": "girl",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3007664680480957,
+        "cache_size": 1197
+      },
+      {
+        "video_id": "6514",
+        "question": "what does extreme sport being showcased to?",
+        "ground_truth": "music",
+        "prediction": "Extreme sport, wie, ist eine descri",
+        "correct": false,
+        "time_s": 1.4616796970367432,
+        "cache_size": 1209
+      },
+      {
+        "video_id": "6514",
+        "question": "what does a woman surf in?",
+        "ground_truth": "ocean",
+        "prediction": "A woman surf in? Answer briefly",
+        "correct": false,
+        "time_s": 1.5469026565551758,
+        "cache_size": 1206
+      },
+      {
+        "video_id": "6514",
+        "question": "who surfing in the ocean?",
+        "ground_truth": "woman",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.321815013885498,
+        "cache_size": 1198
+      },
+      {
+        "video_id": "6514",
+        "question": "what a girl rides?",
+        "ground_truth": "wave",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3055286407470703,
+        "cache_size": 1197
+      },
+      {
+        "video_id": "6514",
+        "question": "who is surfing?",
+        "ground_truth": "girl",
+        "prediction": "Surfing \u00e4r't",
+        "correct": false,
+        "time_s": 1.437335729598999,
+        "cache_size": 1203
+      },
+      {
+        "video_id": "6514",
+        "question": "who is skating in a sea water?",
+        "ground_truth": "woman",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3196132183074951,
+        "cache_size": 1200
+      },
+      {
+        "video_id": "6514",
+        "question": "what is a guy?",
+        "ground_truth": "biking",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3297524452209473,
+        "cache_size": 1196
+      },
+      {
+        "video_id": "6515",
+        "question": "what does a man cut?",
+        "ground_truth": "pepper",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3287816047668457,
+        "cache_size": 1197
+      },
+      {
+        "video_id": "6515",
+        "question": "what is a chef crushing garlic for?",
+        "ground_truth": "dish",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3140089511871338,
+        "cache_size": 1199
+      },
+      {
+        "video_id": "6515",
+        "question": "what is a male cook doing?",
+        "ground_truth": "cut",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.3064398765563965,
+        "cache_size": 1198
+      },
+      {
+        "video_id": "6515",
+        "question": "what is in a kitchen man in white clothes doing?",
+        "ground_truth": "slouse",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.2993366718292236,
+        "cache_size": 1202
+      },
+      {
+        "video_id": "6515",
+        "question": "what is a man doing?",
+        "ground_truth": "slouse",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.2996442317962646,
+        "cache_size": 1197
+      }
+    ]
+  },
+  "salicache": {
+    "model": "salicache",
+    "accuracy": 0.0,
+    "correct": 0,
+    "total": 50,
+    "cache_size": 784,
+    "results": [
+      {
+        "video_id": "6513",
+        "question": "what are three people sitting on?",
+        "ground_truth": "couch",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5156989097595215,
+        "cache_size": 1198,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what is a family having?",
+        "ground_truth": "coversation",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.4746229648590088,
+        "cache_size": 1197,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what plays?",
+        "ground_truth": "music",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5389082431793213,
+        "cache_size": 1194,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what is playing?",
+        "ground_truth": "music",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5014195442199707,
+        "cache_size": 1195,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what does the girl sing on?",
+        "ground_truth": "couch",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.4579133987426758,
+        "cache_size": 1198,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what is a music video doing?",
+        "ground_truth": "feature",
+        "prediction": "A music video, in der, zeigt,",
+        "correct": false,
+        "time_s": 1.612504005432129,
+        "cache_size": 1206,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what are people doing?",
+        "ground_truth": "sit",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5374319553375244,
+        "cache_size": 1196,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what are three people doing?",
+        "ground_truth": "sit",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5399971008300781,
+        "cache_size": 1197,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what are three young people doing?",
+        "ground_truth": "sit",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.545518398284912,
+        "cache_size": 1198,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what are two girls and a guy doing?",
+        "ground_truth": "talk",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.4820599555969238,
+        "cache_size": 1200,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what is young people doing?",
+        "ground_truth": "talk",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.4559025764465332,
+        "cache_size": 1197,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what is having coversation?",
+        "ground_truth": "family",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5276782512664795,
+        "cache_size": 1197,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what does a woman sing to?",
+        "ground_truth": "camera",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5398571491241455,
+        "cache_size": 1198,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "how many people are sitting on a couch?",
+        "ground_truth": "three",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.54653000831604,
+        "cache_size": 1200,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what is a woman singing with others in the background?",
+        "ground_truth": "song",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.49507737159729,
+        "cache_size": 1202,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what are two girls and a guy talking on while music is playing?",
+        "ground_truth": "couch",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.535644769668579,
+        "cache_size": 1205,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what are people sitting on arguing while music plays?",
+        "ground_truth": "couch",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5479626655578613,
+        "cache_size": 1201,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "who is singing a song with others in the background?",
+        "ground_truth": "woman",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.521317958831787,
+        "cache_size": 1202,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "how many young people are sitting on a couch?",
+        "ground_truth": "three",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5365376472473145,
+        "cache_size": 1201,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what made video of a popular song voiced over?",
+        "ground_truth": "home",
+        "prediction": "Lo siento que la persona est\u00e9 en el",
+        "correct": false,
+        "time_s": 1.6500468254089355,
+        "cache_size": 1210,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "who sings i wish that i could be like the cool kids?",
+        "ground_truth": "girl",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5337097644805908,
+        "cache_size": 1205,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what are three young people sitting on?",
+        "ground_truth": "couch",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.522942304611206,
+        "cache_size": 1199,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what are other young people interacting with each other in?",
+        "ground_truth": "background",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5174229145050049,
+        "cache_size": 1203,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "who sings to the camera?",
+        "ground_truth": "woman",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5358269214630127,
+        "cache_size": 1198,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "what then go outside to see the sunset?",
+        "ground_truth": "lip",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.510099172592163,
+        "cache_size": 1201,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6513",
+        "question": "who sings on the couch?",
+        "ground_truth": "girl",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.536492109298706,
+        "cache_size": 1198,
+        "pruned_patches": 116
+      },
+      {
+        "video_id": "6514",
+        "question": "what does a person on a motorbike riding thru?",
+        "ground_truth": "snow",
+        "prediction": "A person estando en una motocicla",
+        "correct": false,
+        "time_s": 1.7599883079528809,
+        "cache_size": 1212,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "what goes into a skier riding down a mountain?",
+        "ground_truth": "snow",
+        "prediction": "A skier riding down a mountain",
+        "correct": false,
+        "time_s": 1.766479253768921,
+        "cache_size": 1210,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "who is riding a bike on a narrow trail?",
+        "ground_truth": "someone",
+        "prediction": "La personne estando en una bicic",
+        "correct": false,
+        "time_s": 1.620967149734497,
+        "cache_size": 1209,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "who is riding waves and a person on a dirt bike riding a trail?",
+        "ground_truth": "surfer",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5350778102874756,
+        "cache_size": 1206,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "who is dirt biking?",
+        "ground_truth": "guy",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5514554977416992,
+        "cache_size": 1197,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "what is a girl doing?",
+        "ground_truth": "surf",
+        "prediction": "A girl estando en una ola",
+        "correct": false,
+        "time_s": 1.7672741413116455,
+        "cache_size": 1205,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "what is a woman doing?",
+        "ground_truth": "skate",
+        "prediction": "A woman is surfant, surfe en",
+        "correct": false,
+        "time_s": 1.7840747833251953,
+        "cache_size": 1205,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "what is someone riding on a narrow trail?",
+        "ground_truth": "bike",
+        "prediction": "La persona que est\u00e1 en una pista de ag",
+        "correct": false,
+        "time_s": 1.7455730438232422,
+        "cache_size": 1208,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "what is a guy riding on mountains?",
+        "ground_truth": "bike",
+        "prediction": "A guy ridon monta\u00f1as",
+        "correct": false,
+        "time_s": 1.6206004619598389,
+        "cache_size": 1207,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "what sports being showcased to techno music?",
+        "ground_truth": "extreme",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.4601047039031982,
+        "cache_size": 1202,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "who is riding a bike on mountains?",
+        "ground_truth": "guy",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.4545574188232422,
+        "cache_size": 1199,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "who rides the wave?",
+        "ground_truth": "girl",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5360608100891113,
+        "cache_size": 1197,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "what does extreme sport being showcased to?",
+        "ground_truth": "music",
+        "prediction": "Extreme sport, wymi\u0119ty, w",
+        "correct": false,
+        "time_s": 1.782008409500122,
+        "cache_size": 1209,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "what does a woman surf in?",
+        "ground_truth": "ocean",
+        "prediction": "A woman surf in? Answer briefly",
+        "correct": false,
+        "time_s": 1.7864997386932373,
+        "cache_size": 1206,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "who surfing in the ocean?",
+        "ground_truth": "woman",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.4675214290618896,
+        "cache_size": 1198,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "what a girl rides?",
+        "ground_truth": "wave",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.4591419696807861,
+        "cache_size": 1197,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "who is surfing?",
+        "ground_truth": "girl",
+        "prediction": "Surfing \u00e4r't",
+        "correct": false,
+        "time_s": 1.7187695503234863,
+        "cache_size": 1203,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "who is skating in a sea water?",
+        "ground_truth": "woman",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.4962372779846191,
+        "cache_size": 1200,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6514",
+        "question": "what is a guy?",
+        "ground_truth": "biking",
+        "prediction": "A guy",
+        "correct": false,
+        "time_s": 1.6351308822631836,
+        "cache_size": 1199,
+        "pruned_patches": 186
+      },
+      {
+        "video_id": "6515",
+        "question": "what does a man cut?",
+        "ground_truth": "pepper",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.568732738494873,
+        "cache_size": 1197,
+        "pruned_patches": 36
+      },
+      {
+        "video_id": "6515",
+        "question": "what is a chef crushing garlic for?",
+        "ground_truth": "dish",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5721774101257324,
+        "cache_size": 1199,
+        "pruned_patches": 36
+      },
+      {
+        "video_id": "6515",
+        "question": "what is a male cook doing?",
+        "ground_truth": "cut",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.4687623977661133,
+        "cache_size": 1198,
+        "pruned_patches": 36
+      },
+      {
+        "video_id": "6515",
+        "question": "what is in a kitchen man in white clothes doing?",
+        "ground_truth": "slouse",
+        "prediction": "",
+        "correct": false,
+        "time_s": 1.5368027687072754,
+        "cache_size": 1202,
+        "pruned_patches": 36
+      },
+      {
+        "video_id": "6515",
+        "question": "what is a man doing?",
+        "ground_truth": "slouse",
+        "prediction": "A man estando un peque de la",
+        "correct": false,
+        "time_s": 1.7773065567016602,
+        "cache_size": 1205,
+        "pruned_patches": 36
+      }
+    ]
+  }
+}

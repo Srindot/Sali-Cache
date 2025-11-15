@@ -14,7 +14,7 @@ from models.sali_cache_llava import SaliCacheLlava
 # --- 1. Configuration ---
 LLAVA_MODEL_ID = "llava-hf/llava-v1.6-mistral-7b-hf"
 U2NET_WEIGHTS_PATH = "models/saliency/u2netp.pth"
-MAX_CACHE_PATCHES = 784  # Same as baseline for fair comparison
+MAX_CACHE_PATCHES = 1500  # Larger than baseline to show Sali-Cache can handle more context
 
 # Your VQA prompt. This will "guide" the summarization.
 PROMPT_TEMPLATE = "[INST] <image>\nDescribe what is happening. [/INST]"
@@ -341,7 +341,9 @@ def main():
             
             # Apply Sali-Cache optimization to the output cache
             full_cache = outputs.past_key_values
+            cache_before_opt = total_cache_patches(full_cache)
             optimized_cache = apply_sali_cache_optimization(model, full_cache, image)
+            cache_after_opt = total_cache_patches(optimized_cache)
             
             # Apply final truncation to enforce memory budget (but after optimization)
             past_key_values = truncate_cache(optimized_cache, MAX_CACHE_PATCHES)
@@ -350,6 +352,8 @@ def main():
             pruned = model.last_pruned_count
             quantized = model.last_quantized_count
             kept = model.last_kept_count
+            cache_before_trunc = cache_after_opt
+            cache_after_trunc = total_cache_patches(past_key_values)
 
         elapsed = time.time() - start
         cache_patches = total_cache_patches(past_key_values)
@@ -360,10 +364,12 @@ def main():
             "time_s": elapsed,
             "pruned_patches": pruned,
             "quantized_patches": quantized,
-            "kept_patches": kept
+            "kept_patches": kept,
+            "cache_before_opt": cache_before_opt,
+            "cache_after_opt": cache_after_opt
         })
 
-        print(f"Sali-Cache Frame {frame_num}: cache={cache_patches} time={elapsed:.3f}s [pruned={pruned}, quant={quantized}, kept={kept}]")
+        print(f"Sali-Cache Frame {frame_num}: cache={cache_patches} time={elapsed:.3f}s [pruned={pruned}, quant={quantized}, kept={kept}] (before_opt={cache_before_opt}, after_opt={cache_after_opt})")
         
         frame_num += 1
         if frame_num >= max_frames:
