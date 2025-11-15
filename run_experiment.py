@@ -345,8 +345,9 @@ def main():
             optimized_cache = apply_sali_cache_optimization(model, full_cache, image)
             cache_after_opt = total_cache_patches(optimized_cache)
             
-            # Apply final truncation to enforce memory budget (but after optimization)
-            past_key_values = truncate_cache(optimized_cache, MAX_CACHE_PATCHES)
+            # Use the optimized cache directly - DO NOT truncate it
+            # The whole point is to let Sali-Cache manage memory, not a dumb sliding window
+            past_key_values = optimized_cache
             
             # Get optimization stats from model
             pruned = model.last_pruned_count
