@@ -368,14 +368,11 @@ def main():
             optimized_cache = apply_sali_cache_optimization(model, full_cache, image)
             cache_after_opt = total_cache_patches(optimized_cache)
             
-            # Apply a SOFT LIMIT to prevent OOM, but make it larger than baseline
-            # This shows: "Sali-Cache can handle MORE context than baseline with same memory"
-            # Baseline uses 784, we use 2000 to show we're more efficient
-            SOFT_LIMIT = 2000
-            if cache_after_opt > SOFT_LIMIT:
-                past_key_values = truncate_cache(optimized_cache, SOFT_LIMIT)
-            else:
-                past_key_values = optimized_cache
+            # CRITICAL: Apply the SAME memory limit as baseline for fair comparison
+            # Both models get 784 patches. The question is: which model uses them SMARTER?
+            # Baseline: keeps most recent 784 (dumb sliding window)
+            # Sali-Cache: keeps most important 784 (smart selection based on motion+saliency)
+            past_key_values = truncate_cache(optimized_cache, MAX_CACHE_PATCHES)
             
             # Get optimization stats from model
             pruned = model.last_pruned_count
